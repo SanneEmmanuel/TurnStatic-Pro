@@ -26,57 +26,47 @@ You can download the latest version of TurnStatic Pro here:
 
 ## Installation
 
-1. Download the `TurnStatic-Pro.zip` file from the link above.
+**Follow these steps carefully to install TurnStatic Pro on your WordPress site:**
 
-   <img src="https://wordpress.org/about/images/logos/wordpress-logo-notext-rgb.png" alt="Download Plugin Zip" width="120" style="display:block;margin:15px 0;" />
+1. **Download** the `TurnStatic-Pro.zip` file from the link above.
 
-2. Log in to your WordPress admin dashboard.
+2. **Log in** to your WordPress admin dashboard (usually at `yourdomain.com/wp-admin`).
 
-   <img src="https://make.wordpress.org/core/files/2018/06/dashboard-login.png" alt="WordPress Login Screen" width="600" style="max-width:100%;margin-bottom:15px;" />
+3. From the dashboard sidebar, navigate to **Plugins > Add New**.
 
-3. Navigate to **Plugins > Add New**.
+4. At the top of the page, click the **Upload Plugin** button.
 
-   <img src="https://make.wordpress.org/core/files/2018/06/plugins-add-new.png" alt="Plugins Add New" width="600" style="max-width:100%;margin-bottom:15px;" />
+5. Click **Choose File**, select the downloaded `TurnStatic-Pro.zip` file from your computer.
 
-4. Click the **Upload Plugin** button at the top.
+6. Click **Install Now**.
 
-   <img src="https://make.wordpress.org/core/files/2018/06/plugins-upload.png" alt="Upload Plugin Button" width="600" style="max-width:100%;margin-bottom:15px;" />
+7. After installation completes, click **Activate Plugin**.
 
-5. Choose the `TurnStatic-Pro.zip` file you downloaded and click **Install Now**.
-
-6. After installation, click **Activate Plugin**.
+8. The plugin will now appear in your WordPress admin sidebar as **TurnStatic Pro**.
 
 ---
 
 ## Usage
 
-1. In your WordPress admin sidebar, find the **TurnStatic Pro** menu item and click it.
+1. Click **TurnStatic Pro** in the WordPress admin sidebar.
 
-   <img src="https://make.wordpress.org/core/files/2018/06/admin-menu-plugins.png" alt="Admin Sidebar Plugins Menu" width="600" style="max-width:100%;margin-bottom:15px;" />
+2. On the plugin page, click the **Export Site as ZIP** button.
 
-2. You will see the plugin’s beautifully designed interface with an **Export Site as ZIP** button.
-
-   *(Plugin UI screenshots will appear here after installation)*
-
-3. Click the button to start the export process. The plugin will crawl all your pages and posts, inline styles and scripts, gather media files, and generate a ZIP archive.
+3. The plugin will generate static HTML files for all your pages and posts, inline all CSS and JavaScript, and bundle all media files into a downloadable ZIP archive.
 
 4. Your browser will automatically download the ZIP file containing your full static website.
 
-5. After export, a WhatsApp support popup will appear where you can reach out for help directly via WhatsApp at +2348109995000.
+5. After export, a WhatsApp support popup will appear, allowing you to contact support directly at +2348109995000.
 
 ---
 
 ## How to Use the Static Site
 
-* Unzip the downloaded ZIP archive.
+* **Unzip** the downloaded ZIP archive on your local machine.
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/WinRAR_icon.svg/1200px-WinRAR_icon.svg.png" alt="Unzip Files Icon" width="80" style="margin-bottom:15px;" />
+* **Upload** the extracted files to any static web hosting provider such as Netlify, GitHub Pages, AWS S3, or your own server.
 
-* Upload the extracted files to any static web hosting provider (e.g., Netlify, GitHub Pages, AWS S3, or your own server).
-
-  <img src="https://www.netlify.com/v3/img/components/netlify-logo-black.svg" alt="Netlify Logo" width="120" style="margin-bottom:15px;" />
-
-* Your entire site will be available as static HTML files with all assets included.
+* Your entire website will now be served as a fast, secure, and static HTML site.
 
 ---
 

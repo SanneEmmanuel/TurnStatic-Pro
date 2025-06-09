@@ -28,19 +28,19 @@ You can download the latest version of TurnStatic Pro here:
 
 1. Download the `TurnStatic-Pro.zip` file from the link above.
 
-   <img src="https://raw.githubusercontent.com/github/explore/main/topics/download/download.png" alt="Download Icon" width="80" />
+   <img src="https://wordpress.org/about/images/logos/wordpress-logo-notext-rgb.png" alt="Download Plugin Zip" width="120" style="display:block;margin:15px 0;" />
 
 2. Log in to your WordPress admin dashboard.
 
-   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/WordPress_logo.svg/120px-WordPress_logo.svg.png" alt="WordPress Logo" width="80" />
+   <img src="https://make.wordpress.org/core/files/2018/06/dashboard-login.png" alt="WordPress Login Screen" width="600" style="max-width:100%;margin-bottom:15px;" />
 
 3. Navigate to **Plugins > Add New**.
 
-   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/WordPress_Plugins.svg/120px-WordPress_Plugins.svg.png" alt="WordPress Plugins" width="80" />
+   <img src="https://make.wordpress.org/core/files/2018/06/plugins-add-new.png" alt="Plugins Add New" width="600" style="max-width:100%;margin-bottom:15px;" />
 
 4. Click the **Upload Plugin** button at the top.
 
-   <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" alt="Upload Icon" width="80" />
+   <img src="https://make.wordpress.org/core/files/2018/06/plugins-upload.png" alt="Upload Plugin Button" width="600" style="max-width:100%;margin-bottom:15px;" />
 
 5. Choose the `TurnStatic-Pro.zip` file you downloaded and click **Install Now**.
 
@@ -52,11 +52,11 @@ You can download the latest version of TurnStatic Pro here:
 
 1. In your WordPress admin sidebar, find the **TurnStatic Pro** menu item and click it.
 
-   <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Admin Menu Icon" width="80" />
+   <img src="https://make.wordpress.org/core/files/2018/06/admin-menu-plugins.png" alt="Admin Sidebar Plugins Menu" width="600" style="max-width:100%;margin-bottom:15px;" />
 
 2. You will see the plugin’s beautifully designed interface with an **Export Site as ZIP** button.
 
-   <img src="https://cdn-icons-png.flaticon.com/512/633/633600.png" alt="Export Button" width="80" />
+   *(Plugin UI screenshots will appear here after installation)*
 
 3. Click the button to start the export process. The plugin will crawl all your pages and posts, inline styles and scripts, gather media files, and generate a ZIP archive.
 
@@ -70,11 +70,11 @@ You can download the latest version of TurnStatic Pro here:
 
 * Unzip the downloaded ZIP archive.
 
-  <img src="https://cdn-icons-png.flaticon.com/512/135/135620.png" alt="Unzip Icon" width="80" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/WinRAR_icon.svg/1200px-WinRAR_icon.svg.png" alt="Unzip Files Icon" width="80" style="margin-bottom:15px;" />
 
 * Upload the extracted files to any static web hosting provider (e.g., Netlify, GitHub Pages, AWS S3, or your own server).
 
-  <img src="https://cdn-icons-png.flaticon.com/512/992/992669.png" alt="Upload Icon" width="80" />
+  <img src="https://www.netlify.com/v3/img/components/netlify-logo-black.svg" alt="Netlify Logo" width="120" style="margin-bottom:15px;" />
 
 * Your entire site will be available as static HTML files with all assets included.
 

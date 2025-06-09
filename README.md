@@ -28,27 +28,23 @@ You can download the latest version of TurnStatic Pro here:
 
 1. Download the `TurnStatic-Pro.zip` file from the link above.
 
-   ![Download Plugin Zip](https://i.imgur.com/MwF7AdS.png)
+   <img src="https://raw.githubusercontent.com/github/explore/main/topics/download/download.png" alt="Download Icon" width="80" />
 
 2. Log in to your WordPress admin dashboard.
 
-   ![WordPress Login](https://i.imgur.com/9jSxkEc.png)
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/WordPress_logo.svg/120px-WordPress_logo.svg.png" alt="WordPress Logo" width="80" />
 
 3. Navigate to **Plugins > Add New**.
 
-   ![Plugins Add New](https://i.imgur.com/JK3vgai.png)
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/WordPress_Plugins.svg/120px-WordPress_Plugins.svg.png" alt="WordPress Plugins" width="80" />
 
 4. Click the **Upload Plugin** button at the top.
 
-   ![Upload Plugin Button](https://i.imgur.com/0Up3XHO.png)
+   <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" alt="Upload Icon" width="80" />
 
 5. Choose the `TurnStatic-Pro.zip` file you downloaded and click **Install Now**.
 
-   ![Install Now Button](https://i.imgur.com/g3OhgOi.png)
-
 6. After installation, click **Activate Plugin**.
-
-   ![Activate Plugin Button](https://i.imgur.com/nTG1RYx.png)
 
 ---
 
@@ -56,11 +52,11 @@ You can download the latest version of TurnStatic Pro here:
 
 1. In your WordPress admin sidebar, find the **TurnStatic Pro** menu item and click it.
 
-   ![TurnStatic Pro Menu](https://i.imgur.com/taXwlZm.png)
+   <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Admin Menu Icon" width="80" />
 
 2. You will see the plugin’s beautifully designed interface with an **Export Site as ZIP** button.
 
-   ![Plugin Interface](https://i.imgur.com/o45Fi1y.png)
+   <img src="https://cdn-icons-png.flaticon.com/512/633/633600.png" alt="Export Button" width="80" />
 
 3. Click the button to start the export process. The plugin will crawl all your pages and posts, inline styles and scripts, gather media files, and generate a ZIP archive.
 
@@ -74,11 +70,11 @@ You can download the latest version of TurnStatic Pro here:
 
 * Unzip the downloaded ZIP archive.
 
-  ![Unzipping Files](https://i.imgur.com/Q1cC4Qx.png)
+  <img src="https://cdn-icons-png.flaticon.com/512/135/135620.png" alt="Unzip Icon" width="80" />
 
 * Upload the extracted files to any static web hosting provider (e.g., Netlify, GitHub Pages, AWS S3, or your own server).
 
-  ![Uploading Files](https://i.imgur.com/vGkEXBr.png)
+  <img src="https://cdn-icons-png.flaticon.com/512/992/992669.png" alt="Upload Icon" width="80" />
 
 * Your entire site will be available as static HTML files with all assets included.
 

@@ -28,17 +28,17 @@ You can download the latest version of TurnStatic Pro here:
 
 1. Download the `TurnStatic-Pro.zip` file from the link above.
 
-   ![Download Plugin](https://user-images.githubusercontent.com/73586679/181348889-ec1563b9-682f-4e91-a145-22ff4f2885cd.png)
+   ![Download Plugin](https://raw.githubusercontent.com/SanneEmmanuel/TurnStatic-Pro/main/assets/download-zip.png)
 
 2. Log in to your WordPress admin dashboard.
 
 3. Navigate to **Plugins > Add New**.
 
-   ![Plugins Add New](https://user-images.githubusercontent.com/73586679/181349002-85a79fc8-0f0a-4b2f-bddc-e82a96e850c7.png)
+   ![Plugins Add New](https://raw.githubusercontent.com/SanneEmmanuel/TurnStatic-Pro/main/assets/plugins-add-new.png)
 
 4. Click the **Upload Plugin** button at the top.
 
-   ![Upload Plugin](https://user-images.githubusercontent.com/73586679/181349077-b5ef9b8d-6e3f-4203-bd79-9007cbd01b67.png)
+   ![Upload Plugin](https://raw.githubusercontent.com/SanneEmmanuel/TurnStatic-Pro/main/assets/upload-plugin.png)
 
 5. Choose the `TurnStatic-Pro.zip` file you downloaded and click **Install Now**.
 
@@ -50,11 +50,11 @@ You can download the latest version of TurnStatic Pro here:
 
 1. In your WordPress admin sidebar, find the **TurnStatic Pro** menu item and click it.
 
-   ![TurnStatic Pro Menu](https://user-images.githubusercontent.com/73586679/181349179-1c978f42-850c-4dfb-8048-abb9f4c7408f.png)
+   ![TurnStatic Pro Menu](https://raw.githubusercontent.com/SanneEmmanuel/TurnStatic-Pro/main/assets/turnstatic-pro-menu.png)
 
 2. You will see the plugin’s beautifully designed interface with an **Export Site as ZIP** button.
 
-   ![Plugin Interface](https://user-images.githubusercontent.com/73586679/181349275-4393bb9a-0bb1-44f4-b2f0-fd1d8a82c6d7.png)
+   ![Plugin Interface](https://raw.githubusercontent.com/SanneEmmanuel/TurnStatic-Pro/main/assets/plugin-interface.png)
 
 3. Click the button to start the export process. The plugin will crawl all your pages and posts, inline styles and scripts, gather media files, and generate a ZIP archive.
 

@@ -1,0 +1,321 @@
+<?php
+/*
+Plugin Name: TurnStatic Pro
+Plugin URI: https://github.com/sanneemmanuel
+Description: Converts your entire WordPress site into standalone HTML files with all scripts and CSS inline. Downloads as a ZIP archive.
+Version: 1.0
+Author: Dr. Sanne Karibo (SenseTech Resources)
+Author URI: https://github.com/sanneemmanuel
+License: GPL2
+*/
+
+defined('ABSPATH') or die('No script kiddies please!');
+
+class TurnStaticPro {
+
+    public function __construct() {
+        add_action('admin_menu', [$this, 'add_menu']);
+        add_action('admin_post_turnstatic_export', [$this, 'handle_export']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
+    }
+
+    public function add_menu() {
+        add_menu_page(
+            'TurnStatic Pro',
+            'TurnStatic Pro',
+            'manage_options',
+            'turnstatic-pro',
+            [$this, 'render_admin_page'],
+            'dashicons-download',
+            6
+        );
+    }
+
+    public function enqueue_assets($hook) {
+        if ($hook !== 'toplevel_page_turnstatic-pro') return;
+        // Simple styles
+        wp_enqueue_style('turnstatic-css', plugin_dir_url(__FILE__) . 'turnstatic-pro.css');
+        // Simple inline JS for animations and AJAX
+        wp_enqueue_script('turnstatic-js', plugin_dir_url(__FILE__) . 'turnstatic-pro.js', [], false, true);
+        // Localize script to pass ajax url and nonce
+        wp_localize_script('turnstatic-js', 'TurnStatic', [
+            'ajaxUrl' => admin_url('admin-post.php'),
+            'nonce' => wp_create_nonce('turnstatic_nonce'),
+            'whatsapp' => '+2348109995000',
+        ]);
+    }
+
+    public function render_admin_page() {
+        ?>
+        <div class="turnstatic-container">
+            <h1>TurnStatic Pro</h1>
+            <p>Convert your entire WordPress site to a static HTML archive with all CSS and JS inlined.</p>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <input type="hidden" name="action" value="turnstatic_export">
+                <?php wp_nonce_field('turnstatic_nonce'); ?>
+                <button type="submit" class="turnstatic-button">Export Site as ZIP</button>
+            </form>
+            <div id="turnstatic-status"></div>
+        </div>
+
+        <div id="turnstatic-whatsapp" class="turnstatic-whatsapp-popup" style="display:none;">
+            <p>Need support? Chat with us on WhatsApp:</p>
+            <a href="https://wa.me/<?php echo esc_attr('+2348109995000'); ?>" target="_blank" rel="noopener noreferrer">
+                <strong>+2348109995000</strong>
+            </a>
+            <button id="turnstatic-whatsapp-close">Close</button>
+        </div>
+
+        <style>
+        /* Basic CSS for the plugin UI */
+        .turnstatic-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: pulse 3s infinite alternate;
+        }
+        @keyframes pulse {
+            0% {box-shadow: 0 0 15px #fff;}
+            100% {box-shadow: 0 0 40px #6e8efb;}
+        }
+        .turnstatic-button {
+            background: #ff4081;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 15px #ff4081cc;
+        }
+        .turnstatic-button:hover {
+            background: #e040fb;
+            box-shadow: 0 6px 25px #e040fbcc;
+        }
+        #turnstatic-status {
+            margin-top: 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .turnstatic-whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-weight: 600;
+            animation: slideIn 0.7s ease forwards;
+            z-index: 9999;
+        }
+        #turnstatic-whatsapp a {
+            color: #fff;
+            text-decoration: underline;
+            margin-left: 0.5rem;
+        }
+        #turnstatic-whatsapp-close {
+            margin-left: 1rem;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 0.2rem 0.8rem;
+        }
+        @keyframes slideIn {
+            from {opacity: 0; transform: translateX(100%);}
+            to {opacity: 1; transform: translateX(0);}
+        }
+        </style>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const form = document.querySelector('form');
+            const statusDiv = document.getElementById('turnstatic-status');
+            const whatsappPopup = document.getElementById('turnstatic-whatsapp');
+            const whatsappClose = document.getElementById('turnstatic-whatsapp-close');
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                statusDiv.textContent = 'Exporting site, please wait...';
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                }).then(res => {
+                    if (!res.ok) throw new Error('Network response was not ok');
+                    return res.blob();
+                }).then(blob => {
+                    // Download the ZIP file
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'turnstatic-site.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    window.URL.revokeObjectURL(url);
+                    statusDiv.textContent = 'Export complete! Download started.';
+                    // Show WhatsApp popup
+                    whatsappPopup.style.display = 'block';
+                }).catch(err => {
+                    statusDiv.textContent = 'Export failed: ' + err.message;
+                });
+            });
+
+            whatsappClose.addEventListener('click', () => {
+                whatsappPopup.style.display = 'none';
+            });
+        });
+        </script>
+        <?php
+    }
+
+    public function handle_export() {
+        if (!current_user_can('manage_options')) {
+            wp_die('Permission denied');
+        }
+        check_admin_referer('turnstatic_nonce');
+
+        // Use output buffering and ZIP archive to generate static site
+        $zip = new ZipArchive();
+        $zip_name = tempnam(sys_get_temp_dir(), 'turnstatic_') . '.zip';
+        if ($zip->open($zip_name, ZipArchive::CREATE) !== TRUE) {
+            wp_die('Could not create ZIP archive');
+        }
+
+        // Get all published pages and posts URLs
+        $urls = [];
+        $pages = get_posts([
+            'post_type' => ['page', 'post'],
+            'post_status' => 'publish',
+            'numberposts' => -1,
+        ]);
+        foreach ($pages as $page) {
+            $urls[] = get_permalink($page);
+        }
+        // Add home page explicitly
+        $urls[] = home_url('/');
+
+        // Crawl and generate HTML files with inline CSS/JS
+        foreach ($urls as $url) {
+            $html = $this->get_inlined_html($url);
+            if (!$html) continue;
+
+            // Generate a filename from URL path
+            $parsed = parse_url($url);
+            $path = trim($parsed['path'], '/');
+            if (empty($path)) $path = 'index';
+            if (substr($path, -1) === '/') $path = rtrim($path, '/');
+            $filename = $path . '.html';
+
+            $zip->addFromString($filename, $html);
+        }
+
+        // Add media assets (images, uploads)
+        $upload_dir = wp_upload_dir();
+        $base_dir = $upload_dir['basedir'];
+        $base_url = $upload_dir['baseurl'];
+
+        // Recursively add all files in uploads to ZIP
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($base_dir));
+        foreach ($files as $file) {
+            if ($file->isDir()) continue;
+            $filePath = $file->getRealPath();
+            $relativePath = str_replace($base_dir . '/', '', $filePath);
+            $zip->addFile($filePath, 'uploads/' . $relativePath);
+        }
+
+        $zip->close();
+
+        // Output ZIP for download
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="turnstatic-site.zip"');
+        header('Content-Length: ' . filesize($zip_name));
+        readfile($zip_name);
+        unlink($zip_name);
+        exit;
+    }
+
+    private function get_inlined_html($url) {
+        // Get raw HTML of the page
+        $response = wp_remote_get($url);
+        if (is_wp_error($response)) return false;
+        $html = wp_remote_retrieve_body($response);
+        if (empty($html)) return false;
+
+        libxml_use_internal_errors(true);
+        $doc = new DOMDocument();
+        if (!$doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'))) {
+            return false;
+        }
+        libxml_clear_errors();
+
+        $xpath = new DOMXPath($doc);
+
+        // Inline all external CSS files
+        $css_links = $xpath->query("//link[@rel='stylesheet']");
+        foreach ($css_links as $link) {
+            $href = $link->getAttribute('href');
+            $css_content = $this->fetch_resource_content($href, $url);
+            if ($css_content) {
+                $style = $doc->createElement('style', $css_content);
+                $link->parentNode->replaceChild($style, $link);
+            }
+        }
+
+        // Inline all external JS files
+        $js_scripts = $xpath->query("//script[@src]");
+        foreach ($js_scripts as $script) {
+            $src = $script->getAttribute('src');
+            $js_content = $this->fetch_resource_content($src, $url);
+            if ($js_content) {
+                $inline_script = $doc->createElement('script', $js_content);
+                $script->parentNode->replaceChild($inline_script, $script);
+            }
+        }
+
+        // Fix images src to relative paths (assuming they remain in uploads/)
+        $imgs = $xpath->query("//img[@src]");
+        foreach ($imgs as $img) {
+            $src = $img->getAttribute('src');
+            if (strpos($src, home_url()) === 0) {
+                // Change to relative path from site root
+                $rel_path = str_replace(home_url(), '', $src);
+                $rel_path = ltrim($rel_path, '/');
+                $img->setAttribute('src', $rel_path);
+            }
+        }
+
+        // Return cleaned HTML string
+        return $doc->saveHTML();
+    }
+
+    private function fetch_resource_content($resource_url, $page_url) {
+        // Convert relative URL to absolute
+        if (strpos($resource_url, '//') === 0) {
+            $resource_url = parse_url($page_url, PHP_URL_SCHEME) . ':' . $resource_url;
+        } elseif (!preg_match('#^https?://#i', $resource_url)) {
+            // Relative to page url
+            $resource_url = rtrim($page_url, '/') . '/' . ltrim($resource_url, '/');
+        }
+
+        $response = wp_remote_get($resource_url);
+        if (is_wp_error($response)) return false;
+        return wp_remote_retrieve_body($response);
+    }
+
+}
+
+new TurnStaticPro();
+
